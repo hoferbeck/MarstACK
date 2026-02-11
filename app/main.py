@@ -91,7 +91,8 @@ async def get_date_info(request: Request):
     # Get current date and format it
     # Return localtime or UTC if timezone is not set
     tz_name = os.getenv("APP_TIMEZONE")
-
+    if tz_name is None:
+        tz_name = os.getenv("TZ")
     try:
         now = datetime.now(pytz.utc).astimezone(pytz.timezone(tz_name))
     except pytz.UnknownTimeZoneError:
