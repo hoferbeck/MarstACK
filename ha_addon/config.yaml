@@ -10,6 +10,8 @@ arch:
   - armv7
 startup: application
 boot: auto
+ports:
+  8000/tcp: 8000
 ingress: false
 host_network: false
 image: ghcr.io/hoferbeck/marstack
