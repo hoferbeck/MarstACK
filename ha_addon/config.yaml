@@ -11,7 +11,7 @@ arch:
 startup: application
 boot: auto
 ports:
-  8000/tcp: 8000
+  8000/tcp: null
 ingress: false
 host_network: false
 image: ghcr.io/hoferbeck/marstack
