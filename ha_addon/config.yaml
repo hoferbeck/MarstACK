@@ -17,6 +17,8 @@ image: ghcr.io/hoferbeck/marstack
 options:
   log_level: info
   FORWARDED_ALLOW_IPS: "10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
+  APP_TIMEZONE: Europe/Berlin
 schema:
   log_level: list(error|info|debug)
   FORWARDED_ALLOW_IPS: str
+  APP_TIMEZONE: str
