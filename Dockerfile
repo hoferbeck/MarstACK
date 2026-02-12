@@ -12,4 +12,6 @@ RUN chown -R mack:mack /code
 USER mack
 RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
-CMD ["/bin/sh", "-c", "uvicorn main:app --log-level ${LOG_LEVEL} --host 0.0.0.0 --port 8000"]
+COPY ./logging_config.yaml /code/logging_config.yaml
+
+CMD ["/bin/sh", "-c", "uvicorn main:app --log-level ${LOG_LEVEL} --log-config /code/logging_config.yaml --host 0.0.0.0 --port 8000"]
