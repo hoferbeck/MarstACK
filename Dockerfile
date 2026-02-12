@@ -1,4 +1,5 @@
 FROM python:3.12-alpine
+RUN apk add --no-cache su-exec
 
 ENV LOG_LEVEL=info
 
@@ -9,9 +10,10 @@ ENV PATH="/home/mack/.local/bin:${PATH}"
 
 RUN adduser --disabled-password --gecos "MarstACK" mack
 RUN chown -R mack:mack /code
-USER mack
+
+# USER mack -> handled by su-exec in run.py
 RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
 COPY ./logging_config.yaml /code/logging_config.yaml
 
-CMD ["/bin/sh", "-c", "uvicorn main:app --log-level ${LOG_LEVEL} --log-config /code/logging_config.yaml --host 0.0.0.0 --port 8000"]
+CMD ["python", "run.py"]

@@ -16,7 +16,11 @@ host_network: false
 image: ghcr.io/hoferbeck/marstack
 options:
   log_level: info
+  timezone: UTC
+  forwarded_allow_ips: "10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
 schema:
   log_level: list(error|info|debug)
+  timezone: str
+  forwarded_allow_ips: str
 environment:
   FORWARDED_ALLOW_IPS: "10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
